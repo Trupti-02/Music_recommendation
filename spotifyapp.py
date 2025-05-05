@@ -105,6 +105,10 @@ elif page == "Model Evaluation":
         auc = roc_auc_score(y_test, y_prob)
         results.append({"Model": name, "Accuracy": acc, "F1 Score": f1, "ROC AUC": auc})
 
+        st.markdown(f"### 📌 {name} Performance")
+        st.text(classification_report(y_test, y_pred))
+        st.markdown(f"*Accuracy:* {acc:.4f} | *F1 Score:* {f1:.4f} | *ROC AUC:* {auc:.4f}")
+
         if auc > best_auc:
             best_auc = auc
             best_model = model
